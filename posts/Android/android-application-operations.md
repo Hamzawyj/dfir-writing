@@ -3,88 +3,87 @@
 **Original blog post:**  
 🔗 https://www.forensafe.com/blogs/android-application-operations.html  
 
-**Category:** Android forensics – permission and operations logging artifact  
+**Category:** Android forensics – permission / operations logging artifact  
 **Status:** Public DFIR blog post with supporting notes in this repo.
 
 ---
 
 ## 1. Overview
 
-Android Application Operations is an Android system artifact that records **permission-related operations** performed by applications.  
-It helps identify **which app** accessed or attempted to access a sensitive resource (such as location, camera, or microphone), **when**, and **whether the operation was allowed or denied**.
+Android Application Operations is an Android system artifact that records **permission-related operations** performed by apps.  
+It helps answer questions like:
 
-This file is a structured DFIR note that complements the original blog post.
+- Which app tried to access a sensitive resource (camera, location, microphone, etc.)?
+- At what **time** did that operation happen?
+- Was the operation **allowed**, **denied**, or otherwise controlled?
 
----
-
-## 2. Typical source / location
-
-> Fill this section based on your research / article details.
-
-Examples you might want to add (edit these as needed):
-
-- **Android versions tested:**  
-- **File(s):** (e.g. database or XML name)  
-- **Path in backup / extraction:**  
+These notes complement the original blog and focus on DFIR interpretation.
 
 ---
 
-## 3. Key fields of interest
+## 2. Typical content
 
-You can adjust these based on the actual structure you described in the article:
+Depending on the device/version, the underlying structure usually contains information such as:
 
-- **Timestamp** – when the operation occurred.
-- **Package name** – which application performed the operation.
-- **Operation / permission** – what kind of access was requested (e.g. location, camera, mic).
-- **Mode / result** – whether the operation was allowed, denied, ignored, etc.
-- **User / system context** – if available, who or what triggered the change.
+- **Timestamp** of the operation  
+- **Package name** of the app requesting the operation  
+- **Operation / permission type** (e.g. location, camera, mic)  
+- **Mode / result** (allowed, denied, ignored, default, etc.)  
+- Optional flags or metadata related to how the operation was triggered
 
----
-
-## 4. DFIR value
-
-From this artifact, an examiner can determine, for example:
-
-- When a specific app started or stopped accessing a sensitive resource.
-- Whether a permission was **granted, denied, or changed** at a particular time.
-- Changes in permission decisions that may indicate **user actions** or **privacy configuration changes**.
-- Patterns of **suspicious or excessive permission use** by certain apps.
+You should always verify exact fields and formats based on the dataset you examine.
 
 ---
 
-## 5. Tool parsing notes
+## 3. DFIR value
 
-> Summarize how tools handle this artifact. Start with ArtiFast.
+From a forensic perspective, this artifact can be used to:
 
-You can fill things like:
+- Show **when** an app started/stopped accessing specific resources.  
+- Identify **changes in permission behavior** (e.g. user revoking or granting access at a certain time).  
+- Support or challenge statements like “this app never used my camera” or “I disabled its location access.”  
+- Correlate sensitive operations with other events (messages, network traffic, locations, etc.).
 
-- How **ArtiFast** parses and displays the artifact (views, important columns).
-- Any **limitations, quirks, or missing fields**.
-- Parsing time or performance considerations (if relevant).
-- Differences with other tools, if you tested any.
-
----
-
-## 6. Example investigation scenario
-
-Describe a realistic case where this artifact is useful. For example:
-
-> A user reports that a messaging or social media app has been accessing their camera and microphone at strange times.  
->  
-> Using Android Application Operations, an analyst can:
-> - List all operations related to camera/mic for that app.
-> - Correlate timestamps with user activity or periods when the phone should have been idle.
-> - Show whether the operations were allowed or denied, and whether permissions changed over time.
-
-You can customize this scenario to match what you wrote in the article.
+It’s particularly helpful in privacy, stalking, data exfiltration, or surveillance-related cases.
 
 ---
 
-## 7. Related artifacts
+## 4. Tool parsing notes (e.g. ArtiFast)
 
-Optionally, list other Android artifacts that complement this one, e.g.:
+When parsed by tools such as ArtiFast, you typically get:
 
-- App usage / usage statistics
-- Notifications logs
-- Installed apps / package manager data
-- Permission settings / runtime permission logs
+- A **tabular view** of operations (timestamps, app/package, operation type, mode/result).  
+- Filtering and sorting by **operation**, **result**, or **application**.  
+- Integration with a **timeline view** so you can correlate events with other artifacts.
+
+During analysis, you should check:
+
+- How timestamps are normalized (time zone, epoch, precision).  
+- Whether all relevant fields from the raw data are exposed.  
+- How the tool handles **missing or malformed entries**.
+
+---
+
+## 5. Example investigation scenario
+
+Example use case:
+
+> A user reports that a certain application has been improperly accessing their location and microphone.  
+
+Using Android Application Operations, an examiner can:
+
+- Filter for operations related to **location and microphone**.  
+- Identify which app(s) requested these operations.  
+- Review **timestamps** and **results** (allowed/denied).  
+- Correlate those times with other artifacts (messages, calls, network logs, etc.) to understand what was happening on the device.
+
+---
+
+## 6. Related artifacts
+
+Other Android artifacts that often complement this one:
+
+- **Android App Usage History** – to see when the app was active in the foreground.  
+- **Notifications and logs** – to show user-visible activity.  
+- **Installed apps / package manager** – to confirm presence and version.  
+- **Network or proxy logs** (when available) – to check what data might have been sent.
