@@ -11,8 +11,16 @@ Each blog post has its own markdown file with:
 
 ## 📚 Posts
 
-- [Android Application Operations](posts/android-application-operations.md)  
+- [Android Application Operations](posts/Android/android-application-operations.md)  
   Android system artifact that records permission-related operations performed by apps.
+- [Some Other Artifact](posts/Android/some-other-artifact.md)  
+  Short description of what the artifact is.
+- [Some Other Artifact](posts/Android/some-other-artifact.md)  
+  Short description of what the artifact is.
+- [Some Other Artifact](posts/Android/some-other-artifact.md)  
+  Short description of what the artifact is.
+
+
 
 > More posts will be added here as I publish new articles.
 
@@ -20,6 +28,6 @@ Each blog post has its own markdown file with:
 
 ## 🧪 Focus areas
 
-- Android & mobile forensics (artifacts, logs, backups)
-- Tool behavior and parsing (e.g. ArtiFast)
-- How artifacts answer concrete investigation questions
+- Cross-platform forensics: Android, iOS, Windows, macOS
+- Tool behavior and parsing (e.g. ArtiFast and other DFIR tools)
+- Using artifacts to answer concrete investigation questions
