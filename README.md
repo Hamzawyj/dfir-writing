@@ -13,11 +13,11 @@ Each blog post has its own markdown file with:
 
 - [Android Application Operations](posts/Android/android-application-operations.md)  
   Android system artifact that records permission-related operations performed by apps.
-- [Android Application Icons](posts/android-application-icons.md)  
+- [Android Application Icons](posts/Android/android-application-icons.md)  
   Launcher cache artifact for app labels/icons and last update times, useful to confirm app presence and context on the device.
-- [Android App Usage History](posts/android-app-usage-history.md)  
+- [Android App Usage History](posts/Android/android-app-usage-history.md)  
   Usage statistics for app launches, foreground time, and configuration changes, ideal for rebuilding user activity and habits.
-- [Android Calendar](posts/android-calendar.md)  
+- [Android Calendar](posts/Android/android-calendar.md)  
   Built-in calendar database storing accounts, events, reminders, and instances, useful for reconstructing schedules and timelines.
 
 
