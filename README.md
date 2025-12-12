@@ -11,7 +11,7 @@ Each post is accompanied by supporting notes in this repository, including:
 
 ## 📚 Posts
 
-- [Android Application Roles](posts/Android/android-application-roles/) — Identifies which apps are assigned to system roles (SMS, dialer, browser, assistant) and their DFIR relevance.
+- [Android Application Roles](posts/Android/android-application-roles.md) — Identifies which apps are assigned to system roles (SMS, dialer, browser, assistant) and their DFIR relevance.
 - [Android Application Operations](posts/Android/android-application-operations.md) — Android system artifact that records permission-related operations performed by applications.
 - [Android Application Icons](posts/Android/android-application-icons.md) — Launcher cache artifact for app labels/icons and last update times, useful for confirming app presence and context.
 - [Android App Usage History](posts/Android/android-app-usage-history.md) — Usage statistics for app launches, foreground time, and configuration changes, ideal for rebuilding user activity and habits.
