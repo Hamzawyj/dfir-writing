@@ -9,7 +9,8 @@ Each blog post has its own markdown file with:
 
 ---
 
-## 📚 Posts- [Android Application Roles](posts/Android/android-application-roles/) — Identifies which apps are assigned to system roles (SMS, dialer, browser, assistant) and their DFIR relevance.
+## 📚 Posts- 
+[Android Application Roles](posts/Android/android-application-roles/) — Identifies which apps are assigned to system roles (SMS, dialer, browser, assistant) and their DFIR relevance.
 - [Android Application Operations](posts/Android/android-application-operations.md)  
   Android system artifact that records permission-related operations performed by apps.
 - [Android Application Icons](posts/Android/android-application-icons.md)  
